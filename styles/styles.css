@@ -1,21 +1,23 @@
-*, ::before, ::after {
+*,
+::before,
+::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 html {
     font-size: 16px;
 }
 
-body{
+body {
     background-color: black;
 }
 
 .page {
     display: flex;
     flex-direction: column;
-    }
+}
 
 .header {
     width: 100%;
@@ -57,7 +59,7 @@ a:hover {
     border-radius: 6px;
     width: 600px;
     height: 100%;
-    
+
 }
 
 
@@ -72,7 +74,7 @@ a:hover {
     background-color: black;
     border-bottom: 4px solid white;
     color: white;
-    
+
 }
 
 .grid {
@@ -82,8 +84,8 @@ a:hover {
     border-radius: 8px;
     padding: 1em;
     grid-gap: 1em;
-    
-    
+
+
 
 }
 
@@ -94,7 +96,7 @@ button {
     font-size: 2rem;
     font-family: "Helvetica", sans-serif;
     font-weight: bold;
-    text-shadow: 0 1px rgba(255,255,255,.4);
+    text-shadow: 0 1px rgba(255, 255, 255, .4);
 }
 
 button:hover {
@@ -109,7 +111,7 @@ button:hover {
 
 .equal {
     height: 100%;
-    grid-area:  4 / 4 / 6 / 5;
+    grid-area: 4 / 4 / 6 / 5;
 }
 
 .zero {
@@ -129,16 +131,13 @@ button:hover {
 }
 
 
-    @media only screen and (max-width: 400px) {
-       .content {
+@media only screen and (max-width: 400px) {
+    .content {
         max-width: 350px;
-      } 
-
-      .header {
-        font-size: 2vh;
-      }
-   
     }
 
- 
-     
+    .header {
+        font-size: 2vh;
+    }
+
+}
