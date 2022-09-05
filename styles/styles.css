@@ -35,27 +35,44 @@
 }
 
 
+.content {
+    border: 2px solid white;
+    background-color: grey;
+    border-radius: 6px;
+    width: 600px;
+    height: 100%;
+    
+}
+
+
 .screen {
     height: 100px;
     background-color: white;
 }
 
-.content {
-    background-color: grey;
-    width: 600px;
-    height: 100%;
-    
-}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-template-rows: repeat(4, auto);
+    border-radius: 6px;
     padding: 1em;
-    grid-gap: 1em
+    grid-gap: 1em;
+    
 
 }
 
 button {
     height: 80px;
+    border-radius: 8px;
 }
 
+.equal {
+    height: 100%;
+    grid-area:  4 / 4 / 6 / 5;
+}
+
+.zero {
+    width: 100%;
+    grid-column: 1 / 3;
+}
