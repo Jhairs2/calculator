@@ -21,12 +21,6 @@ deleteButton.addEventListener("click", removeNum);
 equalButton.addEventListener("click", operate);
 
 
-
-
-
-
-
-
 // Functions
 
 // Figure out a way to get buttons to display value on screen
@@ -68,20 +62,19 @@ function removeNum() {
 
 // Do calculations with the values selected
 function operations() {
-    isRunning = true;
 
-           if (previousOperand.length > 0 && previousNumber) { 
-                operate();
-                previousNumber = screen.textContent;
-                previousOperand.push(this.textContent);
-            }
+    if (previousOperand.length > 0 && previousNumber) {
+        operate();
+        previousNumber = screen.textContent;
+        previousOperand.push(this.textContent);
+    }
 
-            else {
-                console.log("word")
-                previousNumber = screen.textContent;
-                previousOperand.push(this.textContent);
-            }
-        }
+    else {
+        isRunning = true;
+        previousNumber = screen.textContent;
+        previousOperand.push(this.textContent);
+    }
+}
 
 // get math operations to do perform correctly
 function operate() {
@@ -111,6 +104,9 @@ function operate() {
             break;
 
         case "÷":
+            if(screen.textContent == 0) {
+                return screen.textContent = "ERROR";
+            }
             result = parseFloat(previousNumber) / parseFloat(screen.textContent);
             screen.textContent = result.toString();
             previousNumber = null;
