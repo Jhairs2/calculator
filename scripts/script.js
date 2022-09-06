@@ -1,7 +1,7 @@
 // Global Variables
 
 // variables to save values for calculations
-let previousNumber;
+let previousNumber = null;
 previousOperand = [];
 let isRunning = false;
 
@@ -11,6 +11,7 @@ const allClearButton = document.querySelector(".all-clear");
 const deleteButton = document.querySelector(".delete");
 const equalButton = document.querySelector(".equal");
 const operationButtons = document.querySelectorAll(".ops");
+const decimalButton = document.querySelector(".decimal");
 
 
 // Event Listeners
@@ -34,6 +35,13 @@ function appendNum() {
 
     else if (screen.textContent.length < 13) {
         screen.textContent += this.textContent;
+    }
+
+    else if (screen.textContent.indexOf('.')) {
+        decimalButton.disabled = true;
+
+        
+       
     }
 
 }
@@ -63,7 +71,7 @@ function removeNum() {
 // Do calculations with the values selected
 function operations() {
 
-    if (previousOperand.length > 0 && previousNumber) {
+    if (previousOperand.length > 0 && previousNumber != null) {
         operate();
         previousNumber = screen.textContent;
         previousOperand.push(this.textContent);
@@ -105,6 +113,8 @@ function operate() {
 
         case "÷":
             if(screen.textContent == 0) {
+                previousNumber = null;
+                previousOperand.shift();
                 return screen.textContent = "ERROR";
             }
             result = parseFloat(previousNumber) / parseFloat(screen.textContent);
