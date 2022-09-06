@@ -34,8 +34,8 @@ function appendNum() {
     if (screen.textContent == 0 || isRunning) {
         isRunning = false;
         screen.textContent = this.textContent;
-        
-    } 
+
+    }
 
     else if (screen.textContent.length < 13) {
         screen.textContent += this.textContent;
@@ -53,12 +53,12 @@ function clear() {
 
 // Remove last number inputted on screen
 function removeNum() {
-    
-    if(screen.textContent.length == 1) {
+
+    if (screen.textContent.length == 1) {
         screen.textContent = "0";
     }
     else {
-    screen.textContent = screen.textContent.slice(0, screen.textContent.length - 1);
+        screen.textContent = screen.textContent.slice(0, screen.textContent.length - 1);
     }
 
 }
@@ -67,20 +67,42 @@ function removeNum() {
 function operations() {
     isRunning = true;
 
-    switch(this.textContent) {
-        
+    switch (this.textContent) {
+
         case "+":
-            if(previousNumber) { operate(); } 
-            
+            if (previousNumber) { operate(); }
+
             else {
-            previousNumber = screen.textContent;
-            previousOperand = this.textContent;
+                previousNumber = screen.textContent;
+                previousOperand = this.textContent;
             }
             break;
 
         case "-":
-            previousNumber = screen.textContent;
-            previousOperand = this.textContent;
+            if (previousNumber) { operate(); }
+
+            else {
+                previousNumber = screen.textContent;
+                previousOperand = this.textContent;
+            }
+            break;
+
+        case "*":
+            if (previousNumber) { operate(); }
+
+            else {
+                previousNumber = screen.textContent;
+                previousOperand = this.textContent;
+            }
+            break;
+
+        case "÷":
+            if (previousNumber) { operate(); }
+
+            else {
+                previousNumber = screen.textContent;
+                previousOperand = this.textContent;
+            }
             break;
 
     }
@@ -90,15 +112,36 @@ function operations() {
 // get math operations to do perform correctly
 function operate() {
     let result = 0
-    switch(previousOperand) {
+    switch (previousOperand) {
 
         case "+":
-           result = parseFloat(previousNumber) + parseFloat(screen.textContent);
-           screen.textContent = result.toString(); 
-           previousNumber = "";
-           previousOperand = "";
-           break;
+            result = parseFloat(previousNumber) + parseFloat(screen.textContent);
+            screen.textContent = result.toString();
+            previousNumber = "";
+            previousOperand = "";
+            break;
 
-    } 
+        case "-":
+            result = parseFloat(previousNumber) - parseFloat(screen.textContent);
+            screen.textContent = result.toString();
+            previousNumber = "";
+            previousOperand = "";
+            break;
+
+        case "*":
+            result = parseFloat(previousNumber) * parseFloat(screen.textContent);
+            screen.textContent = result.toString();
+            previousNumber = "";
+            previousOperand = "";
+            break;
+
+        case "÷":
+            result = parseFloat(previousNumber) / parseFloat(screen.textContent);
+            screen.textContent = result.toString();
+            previousNumber = "";
+            previousOperand = "";
+            break;
+
+    }
 
 }
