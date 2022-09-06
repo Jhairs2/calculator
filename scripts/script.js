@@ -2,11 +2,14 @@
 // Variables
 const screen = document.querySelector(".screen");
 const numButtons = document.querySelectorAll(".num-pad");
+const allClearButton = document.querySelector(".all-clear");
 
 // Event Listeners
 numButtons.forEach(button => {
-    button.addEventListener("click", appendNum) 
+    button.addEventListener("click", appendNum); 
 })
+
+allClearButton.addEventListener("click", clear);
 
 
 
@@ -23,7 +26,13 @@ function appendNum() {
     if (screen.textContent == 0) {
         screen.textContent = this.textContent;
     } 
-    else {
+
+    else if (screen.textContent.length < 13) {
     screen.textContent += this.textContent;
     }
 }
+
+function clear() {
+    screen.textContent = "0";
+}
+ 
