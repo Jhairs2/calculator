@@ -1,7 +1,8 @@
 // Global Variables
 
 // variables to save values for calculations
-let previousNumber, previousOperand;
+let previousNumber;
+previousOperand = [];
 let isRunning = false;
 
 const screen = document.querySelector(".screen");
@@ -66,80 +67,51 @@ function removeNum() {
 // Do calculations with the values selected
 function operations() {
     isRunning = true;
-
-    switch (this.textContent) {
-
-        case "+":
-            if (previousNumber) { operate(); }
+    console.log(this.textContent);
+           if (previousOperand.length > 0 && previousNumber) { 
+                operate();
+                previousNumber = screen.textContent;
+                previousOperand.push(this.textContent);
+            }
 
             else {
+                console.log("word")
                 previousNumber = screen.textContent;
-                previousOperand = this.textContent;
+                previousOperand.push(this.textContent);
             }
-            break;
-
-        case "-":
-            if (previousNumber) { operate(); }
-
-            else {
-                previousNumber = screen.textContent;
-                previousOperand = this.textContent;
-            }
-            break;
-
-        case "*":
-            if (previousNumber) { operate(); }
-
-            else {
-                previousNumber = screen.textContent;
-                previousOperand = this.textContent;
-            }
-            break;
-
-        case "÷":
-            if (previousNumber) { operate(); }
-
-            else {
-                previousNumber = screen.textContent;
-                previousOperand = this.textContent;
-            }
-            break;
-
-    }
-
-}
+        }
 
 // get math operations to do perform correctly
 function operate() {
     let result = 0
-    switch (previousOperand) {
+    switch (previousOperand[0]) {
 
         case "+":
             result = parseFloat(previousNumber) + parseFloat(screen.textContent);
             screen.textContent = result.toString();
-            previousNumber = "";
-            previousOperand = "";
+            previousNumber = null;
+            previousOperand.shift();
             break;
 
         case "-":
             result = parseFloat(previousNumber) - parseFloat(screen.textContent);
             screen.textContent = result.toString();
-            previousNumber = "";
-            previousOperand = "";
+            previousNumber = null;
+            previousOperand.shift();
             break;
 
         case "*":
             result = parseFloat(previousNumber) * parseFloat(screen.textContent);
             screen.textContent = result.toString();
-            previousNumber = "";
-            previousOperand = "";
+            previousNumber = null;
+            previousOperand.shift();
             break;
 
         case "÷":
             result = parseFloat(previousNumber) / parseFloat(screen.textContent);
             screen.textContent = result.toString();
-            previousNumber = "";
-            previousOperand = "";
+            previousNumber = null;
+            previousOperand.shift();
             break;
 
     }
