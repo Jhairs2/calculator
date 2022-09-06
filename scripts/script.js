@@ -37,7 +37,7 @@ function appendNum() {
         screen.textContent += this.textContent;
     }
 
-    else if (screen.textContent.indexOf('.')) {
+    else if (screen.textContent.indexOf('.') == -1) {
         decimalButton.disabled = true;
 
         
@@ -92,21 +92,21 @@ function operate() {
 
         case "+":
             result = parseFloat(previousNumber) + parseFloat(screen.textContent);
-            screen.textContent = result.toString();
+            screen.textContent = scientificNotation(result);
             previousNumber = null;
             previousOperand.shift();
             break;
 
         case "-":
             result = parseFloat(previousNumber) - parseFloat(screen.textContent);
-            screen.textContent = result.toString();
+            screen.textContent = scientificNotation(result);
             previousNumber = null;
             previousOperand.shift();
             break;
 
         case "*":
-            result = parseFloat(previousNumber) * parseFloat(screen.textContent);
-            screen.textContent = result.toString();
+            result = parseFloat(previousNumber) * parseFloat(screen.textContent); 
+            screen.textContent = scientificNotation(result);
             previousNumber = null;
             previousOperand.shift();
             break;
@@ -118,11 +118,25 @@ function operate() {
                 return screen.textContent = "ERROR";
             }
             result = parseFloat(previousNumber) / parseFloat(screen.textContent);
-            screen.textContent = result.toString();
+            screen.textContent = scientificNotation(result);
             previousNumber = null;
             previousOperand.shift();
             break;
 
+    }
+
+}
+
+function scientificNotation(result) {
+    length = (result + '').replace('.', '').length
+    isSciNot = screen.textContent.includes('e');
+    
+    if(length > 13 || isSciNot) {
+        return result = result.toExponential(3);
+    }
+        
+    else {
+        return result = parseFloat(result.toFixed(8));
     }
 
 }
