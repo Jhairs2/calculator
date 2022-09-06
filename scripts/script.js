@@ -1,8 +1,8 @@
-// Figure out a way to get buttons to display value on screen
-// Variables
+// Global Variables
 const screen = document.querySelector(".screen");
 const numButtons = document.querySelectorAll(".num-pad");
 const allClearButton = document.querySelector(".all-clear");
+const deleteButton = document.querySelector(".delete");
 
 // Event Listeners
 numButtons.forEach(button => {
@@ -10,7 +10,7 @@ numButtons.forEach(button => {
 })
 
 allClearButton.addEventListener("click", clear);
-
+deleteButton.addEventListener("click", removeNum);
 
 
 // save values for calculations
@@ -22,6 +22,7 @@ allClearButton.addEventListener("click", clear);
 
 // Functions
 
+// Figure out a way to get buttons to display value on screen
 function appendNum() {
     if (screen.textContent == 0) {
         screen.textContent = this.textContent;
@@ -35,4 +36,12 @@ function appendNum() {
 function clear() {
     screen.textContent = "0";
 }
- 
+
+function removeNum() {
+    if(screen.textContent.length == 1) {
+        screen.textContent = "0";
+    }
+    else {
+    screen.textContent = screen.textContent.slice(0, screen.textContent.length - 1);
+    }
+}
