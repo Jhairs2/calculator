@@ -50,6 +50,8 @@ function appendNum() {
 // Clear all numbers on screen
 function clear() {
     screen.textContent = "0";
+    previousNumber = null;
+    previousOperand = [];
 }
 
 // Remove last number inputted on screen
@@ -67,7 +69,7 @@ function removeNum() {
 // Do calculations with the values selected
 function operations() {
     isRunning = true;
-    console.log(this.textContent);
+
            if (previousOperand.length > 0 && previousNumber) { 
                 operate();
                 previousNumber = screen.textContent;
@@ -83,6 +85,7 @@ function operations() {
 
 // get math operations to do perform correctly
 function operate() {
+    isRunning = true;
     let result = 0
     switch (previousOperand[0]) {
 
