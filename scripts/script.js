@@ -1,6 +1,9 @@
 // Global Variables
+
+// variables to save values for calculations
 let previousNumber, previousOperand;
 let isRunning = false;
+
 const screen = document.querySelector(".screen");
 const numButtons = document.querySelectorAll(".num-pad");
 const allClearButton = document.querySelector(".all-clear");
@@ -17,11 +20,10 @@ deleteButton.addEventListener("click", removeNum);
 equalButton.addEventListener("click", operate);
 
 
-// save values for calculations
-// Do calculations with the values selected
-// get math operations to do perform correctly
-// Clear and delete buttons
-// display errors when appropriate.
+
+
+
+
 
 
 // Functions
@@ -41,6 +43,8 @@ function appendNum() {
 
 }
 
+// Clear and delete buttons
+// display errors when appropriate.
 
 // Clear all numbers on screen
 function clear() {
@@ -59,15 +63,19 @@ function removeNum() {
 
 }
 
-
+// Do calculations with the values selected
 function operations() {
     isRunning = true;
+
     switch(this.textContent) {
         
         case "+":
+            if(previousNumber) { operate(); } 
+            
+            else {
             previousNumber = screen.textContent;
             previousOperand = this.textContent;
-
+            }
             break;
 
         case "-":
@@ -79,15 +87,18 @@ function operations() {
 
 }
 
-
+// get math operations to do perform correctly
 function operate() {
-    let sum = 0;
-    previousNum = previousNumber;
-    previousOp = previousOperand;
-   console.log(previousOp);
-   console.log(previousNum);
-    if (previousOp == "+") {
-        sum = parseFloat(previousNum) + parseFloat(screen.textContent);
-        screen.textContent = sum.toString(); 
-    }
+    let result = 0
+    switch(previousOperand) {
+
+        case "+":
+           result = parseFloat(previousNumber) + parseFloat(screen.textContent);
+           screen.textContent = result.toString(); 
+           previousNumber = "";
+           previousOperand = "";
+           break;
+
+    } 
+
 }
