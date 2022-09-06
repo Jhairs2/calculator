@@ -64,16 +64,17 @@ a:hover {
 
 
 .screen {
+    grid-column: 1 / -1;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
     font-size: 5rem;
     font-family: Calculator;
-    height: 100px;
     padding-right: 0.10em;
     background-color: black;
     border-bottom: 4px solid white;
     color: white;
+    word-wrap: break-word;
+    word-break: break-all;
 
 }
 
