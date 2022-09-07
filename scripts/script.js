@@ -127,7 +127,7 @@ function scientificNotation(result) {
     length = (result + '').replace('.', '').length
     isSciNot = screen.textContent.includes('e');
 
-    if (length > 13 || isSciNot) {
+    if (length > 11 || isSciNot) {
         return result = parseFloat(result).toExponential(3);
     }
 
