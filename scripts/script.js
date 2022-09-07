@@ -86,21 +86,21 @@ function operate() {
 
         case "+":
             result = parseFloat(previousNumber) + parseFloat(screen.textContent);
-            screen.textContent = scientificNotation(result);
+            screen.textContent = scientificNotation(result.toPrecision(10));
             previousNumber = null;
             previousOperand.shift();
             break;
 
         case "-":
             result = parseFloat(previousNumber) - parseFloat(screen.textContent);
-            screen.textContent = scientificNotation(result);
+            screen.textContent = scientificNotation(result.toPrecision(10));
             previousNumber = null;
             previousOperand.shift();
             break;
 
         case "*":
             result = parseFloat(previousNumber) * parseFloat(screen.textContent);
-            screen.textContent = scientificNotation(result);
+            screen.textContent = scientificNotation(result.toPrecision(10));
             previousNumber = null;
             previousOperand.shift();
             break;
@@ -113,7 +113,7 @@ function operate() {
                 return screen.textContent = "ERROR";
             }
             result = parseFloat(previousNumber) / parseFloat(screen.textContent);
-            screen.textContent = scientificNotation(result);
+            screen.textContent = scientificNotation(result.toPrecision(10));
             previousNumber = null;
             previousOperand.shift();
             break;
@@ -132,7 +132,7 @@ function scientificNotation(result) {
     }
 
     else {
-        return result = parseFloat(result.toFixed(8));
+        return result = parseFloat(result);
     }
 
 }
