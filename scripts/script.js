@@ -1,5 +1,4 @@
 // Global Variables
-
 // variables to save values for calculations
 let previousNumber = null;
 previousOperand = [];
@@ -28,7 +27,7 @@ decimalButton.addEventListener("click", inputDecimal);
 // Figure out a way to get buttons to display value on screen
 function appendNum() {
 
-    if ((screen.textContent == "0"  && screen.textContent != "0." ) || isRunning) {
+    if ((screen.textContent == "0" && screen.textContent != "0.") || isRunning) {
         isRunning = false;
         screen.textContent = this.textContent;
 
@@ -99,14 +98,14 @@ function operate() {
             break;
 
         case "*":
-            result = parseFloat(previousNumber) * parseFloat(screen.textContent); 
+            result = parseFloat(previousNumber) * parseFloat(screen.textContent);
             screen.textContent = scientificNotation(result);
             previousNumber = null;
             previousOperand.shift();
             break;
 
         case "÷":
-            if(screen.textContent == 0) {
+            if (screen.textContent == 0) {
                 previousNumber = null;
                 previousOperand.shift();
                 return screen.textContent = "ERROR";
@@ -124,11 +123,11 @@ function operate() {
 function scientificNotation(result) {
     length = (result + '').replace('.', '').length
     isSciNot = screen.textContent.includes('e');
-    
-    if(length > 13 || isSciNot) {
+
+    if (length > 13 || isSciNot) {
         return result = result.toExponential(3);
     }
-        
+
     else {
         return result = parseFloat(result.toFixed(8));
     }
@@ -136,14 +135,14 @@ function scientificNotation(result) {
 }
 
 function inputDecimal() {
-    if(screen.textContent == null || isRunning) {
+    if (screen.textContent == null || isRunning) {
         isRunning = false;
         screen.textContent = "0";
         screen.textContent += this.textContent;
 
-    } else if(!screen.textContent.includes(this.textContent)) {
+    } else if (!screen.textContent.includes(this.textContent)) {
         screen.textContent += this.textContent;
-    } 
+    }
 }
 
 
