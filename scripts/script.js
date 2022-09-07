@@ -20,6 +20,7 @@ operationButtons.forEach(button => button.addEventListener("click", operations))
 allClearButton.addEventListener("click", clear);
 deleteButton.addEventListener("click", removeNum);
 equalButton.addEventListener("click", operate);
+decimalButton.addEventListener("click", inputDecimal);
 
 
 // Functions
@@ -27,7 +28,7 @@ equalButton.addEventListener("click", operate);
 // Figure out a way to get buttons to display value on screen
 function appendNum() {
 
-    if (screen.textContent == 0 || isRunning) {
+    if ((screen.textContent == "0"  && screen.textContent != "0." ) || isRunning) {
         isRunning = false;
         screen.textContent = this.textContent;
 
@@ -35,13 +36,6 @@ function appendNum() {
 
     else if (screen.textContent.length < 13) {
         screen.textContent += this.textContent;
-    }
-
-    else if (screen.textContent.indexOf('.') == -1) {
-        decimalButton.disabled = true;
-
-        
-       
     }
 
 }
@@ -140,3 +134,16 @@ function scientificNotation(result) {
     }
 
 }
+
+function inputDecimal() {
+    if(screen.textContent == null || isRunning) {
+        isRunning = false;
+        screen.textContent = "0";
+        screen.textContent += this.textContent;
+
+    } else if(!screen.textContent.includes(this.textContent)) {
+        screen.textContent += this.textContent;
+    } 
+}
+
+
