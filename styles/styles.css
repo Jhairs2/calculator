@@ -7,12 +7,25 @@
 }
 
 @font-face {
-    font-family: 'Designer';
-    src: url('fonts/DesignerBlock-m5L2.ttf');
+
+font-family: 'Designer Block';
+
+src: url('fonts/DesignerBlock-m5L2.ttf') format('truetype'),
+     url('fonts/DesignerBlock.woff2') format('woff2'),
+     url('fonts/DesignerBlock.woff') format('woff');
+}
+
+@font-face {
     
     font-family: 'Calculator';
-    src: url('fonts/Calculator.ttf"');
-}
+    
+    src: url('fonts/DesignerBlock-m5L2.ttf') format('truetype'),
+         url('fonts/Calculator.woff2') format('woff2'),
+         url('fonts/Calculator.woff') format('woff'),
+         url('fonts/Calculator.eot')
+
+    }
+    
 
 html {
     font-size: 16px;
@@ -62,7 +75,7 @@ a:hover {
 
 
 .content {
-    border: 4px solid white;
+    border: 4px solid black;
     background-color: grey;
     border-radius: 6px;
     width: 500px;
@@ -78,9 +91,10 @@ a:hover {
     font-size: 5rem;
     font-family: Calculator;
     padding-right: 0.10em;
-    background-color: black;
-    border-bottom: 4px solid white;
-    color: white;
+    background-color: #b2b9b7;
+    border-bottom: 4px solid black;
+    color: black;
+    text-shadow: 1.3px 1.3px #383838;
     word-wrap: break-word;
     word-break: break-all;
 
@@ -111,7 +125,12 @@ button:hover {
     font-size: 2.3rem;
 }
 
-.ops {
+.top {
+    color: black;
+    background-color: silver;
+}
+
+.side {
     color: white;
     background-color: orange;
 }
