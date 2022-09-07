@@ -24,7 +24,8 @@ decimalButton.addEventListener("click", inputDecimal);
 
 // Functions
 
-// Figure out a way to get buttons to display value on screen
+// Append numbers to screen when button is pressed
+// Will clear screen and start new entry if operand has been pressed
 function appendNum() {
 
     if ((screen.textContent == "0" && screen.textContent != "0.") || isRunning) {
@@ -40,9 +41,8 @@ function appendNum() {
 }
 
 // Clear and delete buttons
-// display errors when appropriate.
 
-// Clear all numbers on screen
+// Clear all numbers on screen and reset saved values
 function clear() {
     screen.textContent = "0";
     previousNumber = null;
@@ -58,10 +58,11 @@ function removeNum() {
     else {
         screen.textContent = screen.textContent.slice(0, screen.textContent.length - 1);
     }
-
 }
 
-// Do calculations with the values selected
+
+/* If operand is selected it will save previous values and it will call operate function if an
+    operand has previously been selected */
 function operations() {
 
     if (previousOperand.length > 0 && previousNumber != null) {
@@ -77,7 +78,7 @@ function operations() {
     }
 }
 
-// get math operations to do perform correctly
+// take saved values and decide what math operations to perform 
 function operate() {
     isRunning = true;
     let result = 0
@@ -105,6 +106,7 @@ function operate() {
             break;
 
         case "÷":
+            // Error if divide by zero
             if (screen.textContent == 0) {
                 previousNumber = null;
                 previousOperand.shift();
@@ -120,6 +122,7 @@ function operate() {
 
 }
 
+// Will turn big numbers into scientific notation to prevent overflow
 function scientificNotation(result) {
     length = (result + '').replace('.', '').length
     isSciNot = screen.textContent.includes('e');
@@ -134,6 +137,7 @@ function scientificNotation(result) {
 
 }
 
+// Will allow for decimal to be placed if decimal is not already there
 function inputDecimal() {
     if (screen.textContent == null || isRunning) {
         isRunning = false;
