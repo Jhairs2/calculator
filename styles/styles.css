@@ -6,26 +6,26 @@
     box-sizing: border-box;
 }
 
-/* @font-face {
+ @font-face {
 
 font-family: 'Designer Block';
 
-src: url('fonts/DesignerBlock-m5L2.ttf') format('truetype'),
-     url('fonts/DesignerBlock.woff2') format('woff2'),
-     url('fonts/DesignerBlock.woff') format('woff');
+src: url('../fonts/DesignerBlock-m5L2.ttf') format('truetype'),
+     url('../fonts/DesignerBlock.woff2') format('woff2'),
+     url('../fonts/DesignerBlock.woff') format('woff');
 }
 
 @font-face {
     
     font-family: 'Calculator';
     
-    src: url('fonts/DesignerBlock-m5L2.ttf') format('truetype'),
-         url('fonts/Calculator.woff2') format('woff2'),
-         url('fonts/Calculator.woff') format('woff'),
-         url('fonts/Calculator.eot')
+    src: url('../fonts/Calculator.ttf') format('truetype'),
+         url('../fonts/Calculator.woff2') format('woff2'),
+         url('../fonts/Calculator.woff') format('woff'),
+         url('../fonts/Calculator.eot')
 
     }
-     */
+
 
 html {
     font-size: 16px;
@@ -46,7 +46,7 @@ body {
     justify-content: space-around;
     padding: 1em;
     font-size: 2rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Designer Block', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: white;
     background: rgba(118, 117, 117, 0.8);
     font-weight: bold;
@@ -88,7 +88,7 @@ a:hover {
     display: flex;
     justify-content: flex-end;
     font-size: 5rem;
-    font-family: Droid Serif;
+    font-family: Calculator;
     padding-right: 0.10em;
     background-color: #b2b9b7;
     border: 6px solid rgb(26, 26, 26);
